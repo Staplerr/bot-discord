@@ -17,6 +17,10 @@ client.buttons = new Collection();
 client.commandArray = [];
 client.color = 0x9af8fd
 client.allowed_guild = ['1229154343714947156',];
+/*
+let user_channel;
+client.connection;
+*/
 
 const functionFolders = fs.readdirSync(`./src/functions`);
 for (const folder of functionFolders) {
@@ -28,6 +32,35 @@ for (const folder of functionFolders) {
 }
 
 client.on("messageCreate", (message) => {
+/* test switch cases
+  switch (true) {
+    case message.author.bot :
+      return;
+    case message.content.includes('joinvc') && message.mentions.users.get(client.user.id) :
+      console.log('joining voice channel');
+      message.reply('joining!');
+      user_channel = joinVoiceChannel({
+        message.member.voice.channel
+        });
+      if (!user_channel) {
+        console.log('user in not in the channel.')
+        message.reply('You indeed joinvc')
+        return;
+      }
+      connection = joinVoiceChannel({
+        channelId: channel.id,
+        guildId: channel.guild.id,
+        adapterCreator:
+        channel.guild.voiceAdapterCreator,
+        });
+    case message.content.includes('leavevc') :
+      console.log('leaving voice channel');
+      message.reply('Bye bye!');
+      client.connection.destroy();
+      return;
+      */
+      
+
   if (message.author.bot) {
     return;
   }
