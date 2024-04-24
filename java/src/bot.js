@@ -17,10 +17,8 @@ client.buttons = new Collection();
 client.commandArray = [];
 client.color = 0x9af8fd
 client.allowed_guild = ['1229154343714947156',];
-/*
 let user_channel;
 client.connection;
-*/
 
 const functionFolders = fs.readdirSync(`./src/functions`);
 for (const folder of functionFolders) {
@@ -39,9 +37,7 @@ client.on("messageCreate", (message) => {
     case message.content.includes('joinvc') && message.mentions.users.get(client.user.id) :
       console.log('joining voice channel');
       message.reply('joining!');
-      user_channel = joinVoiceChannel({
-        message.member.voice.channel
-        });
+      user_channel = message.member.voice.channel;
       if (!user_channel) {
         console.log('user in not in the channel.')
         message.reply('You indeed joinvc')
@@ -74,9 +70,9 @@ client.on("messageCreate", (message) => {
     if (message.content.includes('joinvc')) {
       console.log("joining voice channel");
       message.reply('joining!')
-      const channel = message.member.voice.channel;
-      if (!channel) return message.channel.send("cannot join voice channel");
-      const connection = joinVoiceChannel({
+     user_channel = message.member.voice.channel;
+      if (!user_channel) return message.channel.send("cannot join voice channel");
+        client.connection = joinVoiceChannel({
         channelId: channel.id,
         guildId: channel.guild.id,
         adapterCreator: channel.guild.voiceAdapterCreator,
